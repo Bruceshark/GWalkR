@@ -53,4 +53,4 @@ node_modules
 
 .vscode/
 
-inst/htmlwidgets/lib/gwalkr
+inst/htmlwidgets/lib/gwalkr/*

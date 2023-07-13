@@ -63,3 +63,10 @@ renderGwalkr <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, gwalkrOutput, env, quoted = TRUE)
 }
+
+.onLoad <- function(libname, pkgname) {
+  zip_url <- "https://kanaries-app.s3.ap-northeast-1.amazonaws.com/oss/gwalkr/gwalkr_app_js.zip"
+  zip_dest_path <- file.path(tempdir(), "gwalkr_app_js.zip") # Use a temporary directory
+  download.file(zip_url, zip_dest_path, mode = "wb")
+  unzip(zip_dest_path, exdir = system.file("htmlwidgets/lib/gwalkr", package = "GWalkR"))
+}
